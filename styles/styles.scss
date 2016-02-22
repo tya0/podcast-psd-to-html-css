@@ -1,0 +1,1431 @@
+@import "normalize";
+@import "variables";
+@import "placeholders_mixins";
+
+a {
+	text-decoration:none;
+}
+html {
+	font-size: 62.5%;
+}
+
+body {
+	@include fontSizer(16);
+}
+
+img {
+	max-width: 100%;
+}
+
+h1 {
+	@include fontSizer(48);
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	color: $greenFont;
+	margin-top:5%;
+	margin-bottom: 5%;
+}
+h2 {
+	@include fontSizer(22);
+	font-family: $ptFont;
+	letter-spacing: 1px;
+}
+
+.mobile-back-to-top,
+.hamburger-wrap,
+.donate-nav-button-mobile {
+	display:none;
+}
+
+.bar {
+	width:100%;
+	height:12px;
+	border-radius: 5px;
+	background-color: $episodeBarColor;
+}
+
+.episode-season-length {
+	font-family: $robotoFont;
+	@include fontSizer(16);
+	color: $greenFont;
+	text-transform: uppercase;
+	padding-top: 3%;
+	letter-spacing: 1px;
+	p.season {
+		float:left;
+	}
+	p.length {
+		float: right;
+	}
+}
+
+.episode-name {
+	font-family: $ptFont;
+	color:white;
+	font-weight: 400;
+	text-transform: uppercase;
+	margin:0;
+}
+
+.air-date {
+	color:white;
+	font-family: $robotoFont;
+	@include fontSizer(16);
+	font-weight: 700;
+	text-transform: uppercase;
+	margin-bottom: 25px;
+	margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.play-episode {
+	@include link-styles($poppinsFont, 600, $greenFont);
+	@include fontSizer(14);
+	margin:3% 0 0 0;
+	i {
+		margin-right:2%;
+	}
+	&:hover {
+		color:white;
+	}
+}
+
+.episode-details {
+	font-family: $robotoFont;
+	@include fontSizer(18);
+	line-height: 28px;
+	line-height: 2.8rem;
+	color:white;
+	font-weight: 400;
+}
+ 
+.main-wrap,
+.episodes-wrap,
+.about-wrap,
+.purchase-wrap,
+.donate-wrap,
+.options-wrap,
+.footer-wrap {
+	max-width: 1080px;
+	width: 90%;
+	margin: 0 auto;
+}
+
+.main {
+	background-image: url("../assets/hero.jpg");
+	background-size: cover;
+	background-position: center;
+}
+
+header {
+	width: 100%;
+	text-align: center;
+	padding: 2%;
+	border-bottom: 2px solid $lightBorder;
+	img {
+		margin: 0 auto;
+	}
+}
+
+nav {
+	width: 45%;
+	display:flex;
+	flex-direction: row;
+	justify-content: center;
+	margin:0 auto;
+	padding-top: 2%;
+
+	ul.nav {
+		padding: 0;
+		margin: 0;
+		align-items: center; 
+		display: flex;
+		flex-direction: row;
+		li { 
+			list-style:none;
+			a {
+				padding: 8px;
+				@include link-styles($ptFont, 400, white);
+				@include fontSizer(12);
+				&:hover {
+					color: $greenFont;
+				}
+			}
+		}
+	}
+	.donate-nav-button {
+		border: 2px solid white;
+		padding: 8px 12px;
+		@include link-styles($ptFont, 400, white);
+		@include fontSizer(12);
+		margin-left:7%;
+		transition: all 1s;
+		&:hover {
+			background-color: $greenFont;
+		}
+	}
+}
+
+.main-text {
+	font-family: $ptFont;
+	padding:20% 0;
+	.main-text-left {
+		width: 45%;
+		float:left;
+		padding-right:4%;
+		font-family: $ptFont;
+		color: lighten($whiteIsh, 20%);
+		padding-bottom: 5%;
+		.main-text-left-top {
+			@include fontSizer(30);
+			span {
+				color: $whiteIsh;
+			}
+		}
+		.main-text-left-bottom {
+			@include fontSizer(24);
+			color: $whiteIsh;
+			padding-bottom: 10%;
+			border-bottom: 1px solid lighten($whiteIsh, 20%);
+		}
+		.main-text-left-buttons {
+			padding-top:7%;
+			display: flex;
+			flex-direction: row;
+			justify-content: flex-start;
+			align-items: center;
+			transition: all 1s;
+			a.subscribe {
+				@include link-styles($poppinsFont, 600,  white);
+				@include fontSizer(14);
+				padding: 3% 6%;
+				background-color: #0ce682;
+				border-radius: 40px;
+				&:hover {
+					background-color: white;
+					color: $greenFont;
+				}
+			}
+			.social-media-buttons {
+				padding: 15px 30px;
+
+				a {
+					color:white;
+					transition: all 1s;
+					&:hover {
+						color: $greenFont;
+					}
+					i {
+						padding: 0 5px;
+					}
+				}
+			}
+		}
+	}
+
+
+	.main-text-right {
+		width: 45%;
+		float:right;
+		padding-left: 4%;
+		display:flex;
+		flex-direction: column;
+		justify-content: center; 
+		.bar {
+			@extend .bar;
+		}
+		.episode-season-length {
+			@extend .episode-season-length;
+		}
+		h2.episode-name {
+			@extend .episode-name;
+			}
+		p.air-date {
+			@extend .air-date;
+		}
+		a.play-episode {
+			@extend .play-episode;
+		}
+		p.episode-details {
+			@extend .episode-details;
+		}
+	}
+}		
+
+.audiojs {
+	background:black;
+	width: 100%;
+	display:flex;
+	flex-direction: row;
+	justify-content: center;
+	&::after {
+		content: url('../assets/volume.png');
+		display: block;
+		border-left:1px solid $lightBorder;
+		border-right:1px solid $lightBorder;
+		position: relative;
+		padding: 11px 13px 8px 13px;
+		margin-left: 8px;
+	}
+	.play-pause {
+		padding: 10px 3px 8px 16px;
+		width: auto;
+		height: auto;
+		border-left:1px solid $lightBorder;
+		border-right:1px solid $lightBorder;
+		margin-right:8px;
+		.play, .pause {
+			background: url("../assets/play.png");
+			background-repeat: no-repeat;
+		}
+	}
+	.scrubber {
+		width: 30%;
+		height: 5px;
+		margin-top:16px;	
+		.progress {
+			background-image: none;
+			background: $greenFont;
+		}
+	}
+	.time {
+		color:$greenFont;
+		em {
+			color:$greenFont;
+		}
+	}
+}
+
+section.episodes {
+	background-color: #1A171A;
+	color:white;
+	.episodes-wrap {
+		padding-bottom: 6%;
+		.browse {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: center;
+		font-family: $ptFont;
+			p {
+				text-transform: uppercase;
+				@include fontSizer(21);
+				letter-spacing: 2px;
+				margin: 8% 0;
+			}
+			select#season {
+				background: #1A171A;
+				text-transform: uppercase;
+				letter-spacing: 2px;
+				color:white;
+				@include fontSizer(14);
+				margin-left: 25px;
+				border: 1px solid $greenFont;
+			}
+		}
+		.load-more {
+			@include link-styles($poppinsFont, 600, white);
+			@include fontSizer(14);
+			background-color: rgba(255, 255, 255, 0.13);
+			width: 100%;
+			display: block;
+			text-align: center;
+			padding: 2% 10%;
+			outline:0;
+			&:hover {
+				color:$greenFont;
+			}
+		}
+
+	}
+}
+
+.episode-item-wrap {
+
+	.episode1 {
+		background-image: url("../assets/podcast-1.jpg");
+	}
+	.episode2 {
+		background-image: url("../assets/podcast-2.jpg");
+	}
+	.episode3{
+		background-image: url("../assets/podcast-3.jpg");
+	}
+	.episode4 {
+		background-image: url("../assets/podcast-4.jpg");
+	}
+	.episode5 {
+		background-image: url("../assets/podcast-5.jpg");
+	}
+	.episode6 {
+		background-image: url("../assets/podcast-6.jpg");
+	}
+	.episode {
+		display: none;
+		width: 48%;
+		margin-bottom: 3%;
+		background-repeat: no-repeat;
+		background-size: contain;
+		float:left;
+		img {
+			display: block;
+			width: 100%;
+		}
+		.overlay {
+			padding: 9% 7% 21% 7%;
+			height: 100%;
+			display: block;
+			background-color: rgba(0,0,0,0.1);
+			.bar {
+				@extend .bar;
+			}
+			.episode-season-length {
+				@extend .episode-season-length;
+				.length i {
+					padding: 0 5px;
+				}
+			}
+			h2.episode-name {
+				@extend .episode-name;
+				font-weight: 700;
+				}
+			p.air-date {
+				@extend .air-date;
+			}
+			a.play-episode {
+				@extend .play-episode;
+			}
+		}	
+	}
+	.episode:nth-child(odd) {
+		margin-right:4%;
+	}
+}
+
+.about-wrap {
+	h2 {
+		text-transform: uppercase;
+		margin: 8% 0;
+	}
+	.about-person {
+		width: 100%;
+		display:flex;
+		flex-direction: row;
+		padding-bottom: 12%;
+		.person-image1 {
+			width: 50%;
+			background-image: url("../assets/about-1.jpg");
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+		.person-image2 {
+			width: 50%;
+			background-image: url("../assets/about-2.jpg");
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+		& > * {
+			flex: 1 0 50%;
+		}
+		.person-info {
+			padding-bottom: 15%;
+			.bar {
+				@extend .bar;
+				background-color: rgba(26, 23, 26, 0.08);
+				width:83%;
+				float:right;
+			}
+			.role {
+				font-family: $robotoFont;
+				color: $darkFont;
+				font-weight: 700;
+				@include fontSizer(18);
+				text-transform: uppercase;
+				letter-spacing: 1px;
+				margin-bottom: 5%;
+			}
+			.bio {
+				color: rgba(26, 23, 26, 0.6);
+				@include fontSizer(16);
+				font-family: $robotoFont;
+				line-height: 30px;
+			}
+			.icons {
+				a {
+					color: $darkFont;
+					transition: all 1s;
+					&:hover {
+						color: $greenFont;
+					}
+					.fa-twitter {
+						margin-left:2%;
+					}
+				}
+			}
+		}
+		& > * {
+			flex: 1 0 50%;
+		}
+	}
+	.person1 {
+		.person-info {
+		text-align: right;
+		padding-left: 3%;
+		}
+	}
+	.person2 {
+		display: flex;
+		flex-direction: row-reverse;
+		.person-info {
+			padding-right: 3%;
+			.bar {
+				float:left;
+				color:red;
+			}
+		}
+	}
+}
+
+.donate {
+	background-color: $greenFont;
+	text-align: center;
+	.donate-wrap {
+		position: relative;
+		padding-bottom: 10%;
+		z-index: 2;
+	&::after {
+		content: "DONATE";
+		font-family: $ptFont;
+	    font-size: 250px;
+	    position: absolute;
+	    top: 10%;
+	    left: -25px;
+	    width: 100%;
+	    height: 100%;
+	    letter-spacing: 10px;
+	    color: rgba(26,23,26,0.03);
+	    z-index: -1;
+		}
+	}
+	h2 {
+		margin:0;
+		@include fontSizer(36);
+		color:white;
+		font-weight: 700;
+		text-transform: uppercase;
+		padding-top: 8%;
+		padding-bottom: 1%;
+	}
+	.donate-text {
+		width: 65%;
+		margin:0 auto;
+		text-align: center;
+		font-family: $ptFont;
+		@include fontSizer(24);
+		letter-spacing: 1px;
+		color:white;
+		p {
+			text-align: left;
+			margin-bottom: 10%;
+		}
+		.donate-button {
+			@include link-styles($poppinsFont, 600, $darkFont);
+			@include fontSizer(14);
+			padding: 3% 6%;
+			background-color: white;
+			border-radius: 40px;
+			&:hover {
+			background-color: $darkFont;
+			color: $greenFont;
+			}
+		}
+	}
+}
+
+.options {
+	background-color: $darkFont;
+	border-bottom: 1px solid $lightBorder;
+	.options-wrap {	
+		padding: 7% 0;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		// & > * {
+		// 	flex: 1 0 23%;
+		// }
+		.option {
+			width: 23%;
+			.bar {
+				height: 3px;
+			}
+			p {
+				font-family: $ptFont;
+				color:white;
+				@include fontSizer(18);
+				text-transform: uppercase;
+				letter-spacing: 1px;
+				margin:7% 0 10% 0;
+			}
+			ul {
+				margin:0;
+				padding:0;
+				li {
+				font-family: $robotoFont;
+					a {
+						padding: 3% 0 4% 0;
+						color: rgba(255, 255, 255, 0.8);
+						display: block;
+						border-bottom: 1px solid $lightBorder;
+						&:hover {
+							color: $greenFont;
+						}
+						span {
+							color: rgba(159, 159, 159,0.8);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.options-news {
+	.news {
+		border-bottom: 1px solid $lightBorder;
+		p:first-child {
+			color: $optionsColor;
+			@include fontSizer(16);
+			line-height: 24px;
+			margin-bottom: 1%;
+		}
+		p:last-child {
+			color: rgba(159, 159, 159,0.8);
+			@include fontSizer(14);
+			margin-top:3%;
+			margin-bottom: 8%;
+		}
+		a {
+			&:hover p:first-child{
+				color: $greenFont;
+			}
+		}
+	}
+}
+
+
+
+.options-follow {
+	p {
+		margin: 7% 0 0 0
+	}
+	.follow-person {
+		display:flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		border-bottom: 1px solid $lightBorder;
+		margin-bottom:8%;
+		div {
+			.name {
+				@include fontSizer(18);
+				color:$greenFont;
+				font-weight: 700;
+				margin:0;
+			}
+			.role {
+				@include fontSizer(12);
+				color: #7f7e7f;
+				font-family: $robotoFont;
+				margin-top: 8%;
+				margin-bottom: 15%;
+			}
+		}
+		.icons {
+			a {
+				color:white;
+				padding-left: 10px;
+				transition: all 1s;
+				&:hover {
+					color: $greenFont;
+				}
+			}
+
+		}
+	}
+}
+
+footer {
+	background-color: $darkFont;
+}
+	
+.footer-wrap {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: 3% 0;
+	.footer-left {
+		margin-right: 5%;
+		.social-media-buttons {
+			a {
+				color:white;
+				transition: all 1s;
+				&:hover {
+					color: $greenFont;
+				}
+				i {
+					padding: 0 8px;
+				}
+			}
+		}
+	}
+	.footer-middle {
+		text-align: center;
+		margin-left:10%;
+		img {
+			padding-bottom: 20%;
+		}
+		p {
+			color: rgba(255,255,255,0.55);
+			font-family: $robotoFont;
+			@include fontSizer(14);
+		}			
+	}
+	.footer-right {
+		ul.nav {
+			padding: 0;
+			margin: 0;
+			li { 
+				list-style:none;
+				display: inline-block;
+				transition: all 1s;
+				a {
+					padding: 8px;
+					@include link-styles($poppinsFont, 600, rgba(255, 255, 255, 0.56));
+					@include fontSizer(10);
+					&:hover {
+						color: $greenFont;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 940px) {
+	h2 {
+		@include fontSizer(24);
+	}
+	h1 {
+		@include fontSizer(32);
+	}
+	
+	.main-text {
+		padding: 12% 0;
+		.main-text-right {
+			padding-left: 0;
+			width: 47%;
+			.episode-season-length {
+				@include fontSizer(14);
+			}
+			.air-date {
+				@include fontSizer(14);
+				margin-top:3%;
+				margin-bottom: 3%;
+			}
+			.play-episode {
+				@include fontSizer(12);
+			}
+			.episode-details {
+				@include fontSizer(16);
+				line-height: 24px;
+				line-height: 2.4rem;
+			}
+		}
+		.main-text-left {
+			width: 47%;
+			padding-right: 0;
+			text-align: center;
+			.main-text-left-top {
+				@include fontSizer(26);
+			}
+			.main-text-left-bottom {
+				@include fontSizer(18);
+				padding-bottom: 7%;
+			}
+			.main-text-left-buttons {
+				display:block;
+				padding-top: 7%;
+				a.subscribe {
+					@include fontSizer(12);
+				}
+				.social-media-buttons {
+					padding-top:10%;
+				}
+			}
+		}
+	} //end main-text
+	
+	.about-wrap {
+		.about-person {
+			padding-bottom: 5%;
+			.person-info {
+				.role {
+					@include fontSizer(16);
+				}
+				.bio {
+					@include fontSizer(14);
+					line-height: 24px;
+
+				}
+			}
+		}
+	}
+
+	.episode-item-wrap {
+		.episode {
+			.overlay {
+				padding: 9% 6% 10% 5%;				.episode-season-length {
+					margin-top:0;
+					.season {
+						margin-top:0;
+					}
+					.length {
+						margin-top:0;
+					}
+				}
+				.episode-name{
+					@include fontSizer(20);
+				}
+			}
+		}
+	}
+
+	.donate {
+		.donate-wrap {
+			padding-bottom: 12%;
+			h2 {
+				@include fontSizer(24);
+			}
+			.donate-text {
+				width:80%;
+				p {
+					@include fontSizer(18);
+					margin-bottom: 7%;
+				}
+				.donate-button {
+					@include fontSizer(12);
+					letter-spacing: 1px;
+				}
+			}
+			&::after {
+				    font-size: 195px;
+				    left:-10px;
+				    
+				}
+			}
+		} // end donate
+
+	.options-follow {
+		.follow-person {
+			display:block;
+			padding-bottom: 10%;
+			.icons {
+				a {
+					padding-left:0;
+					padding-right:10%;
+				}
+			}
+			div {
+				.role {
+					margin-bottom: 8%;
+				}
+			}
+		}
+	} // end options-follow
+	footer {
+		.footer-wrap {
+			display:block;
+			.footer-left {
+				.social-media-buttons {
+					padding: 0;
+					position: relative;
+					top: 20px;
+					a {
+						i.fa-lg {
+							@include fontSizer(18);
+						}
+					}
+				}
+			}
+			.footer-middle {
+				text-align: right;
+				img {
+					padding-bottom: 0;
+				}
+			}
+			.footer-right {
+				ul.nav {
+					position: relative;
+					top:-32px;
+				}
+			}
+		}
+	}
+} //end media query 940
+
+
+@media (max-width: 768px) {
+	
+	.episode-item-wrap {
+		.episode {
+			.overlay {
+				padding: 7% 6% 14% 6%;
+				.episode-season-length {
+					@include fontSizer(12);
+				}
+				.episode-name {
+					@include fontSizer(15);
+				}
+				.air-date {
+					@include fontSizer(12);
+					letter-spacing: 1px;
+				}
+				.play-episode {
+					@include fontSizer(12);
+				}
+			}
+		}
+	}
+
+	.donate {
+		.donate-wrap {
+			&::after {
+				font-size: 140px;
+				left:-15px;
+			}
+		}
+	}
+}
+
+@media (max-width: 675px) {
+	
+.about {
+	.about-wrap {
+		.about-person {
+			.person-info{
+				padding-bottom: 8%;
+				.bar {
+					width:100%;
+				}
+				h1 {
+					@include fontSizer(28);
+				}
+				.role {
+					@include fontSizer(14);
+				}
+				.bio {
+					@include fontSizer(13);
+					line-height: 20px;
+				}
+			}
+		}
+	}
+}
+
+
+	.options {
+		.options-wrap {
+			width: 100%;
+			display:block;
+			padding:0;
+			z-index: 2;
+			position: relative;
+			.option {
+				width: 100%;
+				text-align: center;
+				.bar {
+					display: none;
+				}
+				.options-label {
+					@include fontSizer(22);
+					margin: 0;
+					border-top: 1px solid $lightBorder;
+					border-bottom: 1px solid $lightBorder;
+					padding: 3% 0;
+					&:hover {
+						cursor: pointer;
+					}
+				}
+			}
+			.options-categories, .options-archives {
+				ul {
+					display:none;
+					li {
+						background-color: lighten($darkFont, 5%);
+					}
+				}
+				ul.show {
+					display:block;
+				}
+			}
+			.options-news {
+				.news {
+					display:none;
+					background-color: lighten($darkFont, 5%);
+					padding:2% 4%;
+					p {
+						margin: 1%;
+					}
+					p:first-child{
+						float:left;
+					}
+					p:last-child {
+						float:right;
+					}
+				}
+				.news.show {
+					display:block;
+				}
+			}
+			.options-follow {
+				.follow-person {
+					display:none;
+					background-color: lighten($darkFont, 5%);
+					padding: 3%;
+					margin:0;
+					.person-info {
+						width: 50%;
+						float:left;
+						text-align: left;
+						padding-left: 15%;
+						.name {
+							margin-bottom: 1%;
+						}
+						.role {
+							margin:0;
+						}
+					}
+					.icons {
+						width: 50%;
+						float:right;
+						position: relative;
+						top: 7px;
+						a {
+							padding:0;
+							margin-left: 5%;
+						}
+					}
+				}
+				.follow-person.show {
+					display: block;
+				}
+			}
+		} //end .options-wrap
+	} //end .options
+	
+	footer {
+		.footer-wrap {
+			.footer-right {
+				ul.nav {
+					top:-27px;
+					li a {
+						@include fontSizer(8);
+						letter-spacing: 1px;
+						padding:3px;
+					}
+				}
+			}
+			.footer-middle {
+				img{
+					width: 120px;
+				}
+				p {
+					@include fontSizer(10);
+				}
+			}
+		}
+	}
+} //end media 675
+
+@media (max-width: 575px) {
+	.main-text {
+		padding: 8% 0;
+		.main-text-left, .main-text-right {
+			float: none;
+			width:85%;
+			margin: 0 auto;
+		}
+		.main-text-left {
+			padding-bottom: 8%;
+			.main-text-left-top {
+				@include fontSizer(22);
+			}
+			.main-text-left-bottom {
+				@include fontSizer(16);
+				width: 85%;
+				margin: 0 auto;
+			}
+			.main-text-left-buttons {
+				padding-top: 3%;
+				a.subscribe {
+					@include fontSizer(11);
+					float:left;
+					margin-left: 10%;
+				}
+				.social-media-buttons {
+					float:right;
+					padding-top:3%;
+					padding-left:0;
+					margin-right: 3%;
+	
+				}
+			}
+		}
+		.main-text-right{
+			.episode-season-length {
+				@include fontSizer(12);
+			}
+			.episode-name {
+				@include fontSizer(20);
+			}
+			.air-date {
+				@include fontSizer(12);
+				margin-top: 4%;
+				margin-bottom: 1%;
+			}
+			.play-episode {
+				@include fontSizer(11);
+			}
+			.episode-details {
+				@include fontSizer(14);
+				line-height: 22px;
+				line-height: 2.2rem;
+				margin-top: 2%;
+			}
+		}
+	}
+	section.episodes {
+		.episodes-wrap {
+			.browse {
+				p {
+					font-size: 1.8rem;
+				}
+				a {
+				font-size: 1.2rem;
+				}
+			}
+			.load-more {
+				@include fontSizer(12);
+			}
+		}
+	}
+
+	div.episode-item-wrap {
+		width: 100%;
+		.episode:nth-child(odd) {
+			margin: 0 auto;
+		}
+		.episode {
+			float:none;
+			width: 302px;
+			height:200px;
+			background-size:cover;
+			margin: 20px auto;
+		}
+	}
+
+	.donate {
+		.donate-wrap {
+			&::after {
+				font-size: 110px;
+			}
+		}
+	}
+} // end media query 575
+
+@media (max-width: 480px) {
+
+	.main-wrap,
+	.episodes-wrap,
+	.about-wrap,
+	.purchase-wrap,
+	.donate-wrap,
+	.options-wrap,
+	.footer-wrap {
+		width: 90%;
+	}
+
+	header {
+		padding:15px 15px 35px 15px;
+		img {
+			float:left;	
+			position: relative;
+			top: 10px;
+			width:40%;
+		}
+		nav {
+			display: block;
+			a.donate-nav-button {
+				display: none;
+			}
+			ul.nav {
+				display:none;
+				margin-top: 50px; 
+				position: relative; 
+				left: -11%;
+				margin-left: 33%;
+				li {
+					text-align: center;
+					margin: 7px 0;
+					a {
+						@include fontSizer(16);
+					}
+				}
+			}
+		}
+		.hamburger-wrap {
+			display: block;
+			outline:0;
+			.hamburger {
+				width: 42px;
+				height: 37px;
+				border: 2px solid white;
+				position: absolute;
+				right: 20px;
+				top:17px;
+				float: right;
+				transition: all 1s;
+				&:hover {
+					background: $greenFont;
+				}
+				span {
+					width: 28px;
+					height: 3px;
+					top: 15px;
+					left: 5px;
+					background-color: white;
+					display: block;
+					position: absolute;
+				}
+				span::before, span::after {
+					position: absolute;
+					display: block;
+					left: 0;
+					top: -8px;
+					width: 28px;
+					height: 3px;
+					background-color: white;
+					content: "";
+				}
+				span::after {
+					top:8px;
+				}
+			}
+		}
+		.donate-nav-button-mobile {
+			display: block;
+			position: absolute;
+			top: 17px;
+			right: 75px;
+			border: 2px solid white;
+			padding: 9px 8px;
+			@include link-styles($ptFont, 400, white);
+			@include fontSizer(12);
+			transition: all 1s;
+			&:hover {
+				background-color: $greenFont;
+			}
+		}
+	}
+
+	.main-text {
+		.main-text-left {
+			width:90%;
+			.main-text-left-top {
+				margin-bottom: 4%;
+			}
+			.main-text-left-bottom {
+				margin-bottom: 7%;
+			}
+			.main-text-left-buttons {
+				a.subscribe, .social-media-buttons {
+					float:none;
+				}
+				a.subscribe {
+					margin:0;
+				}
+				.social-media-buttons {
+					padding:10% 0 0 0;
+					margin:0;
+				}
+			}
+		}
+		.main-text-right {
+			width: 90%;
+		}
+	}
+
+	.about {
+		.about-wrap {
+			h2 {
+				@include fontSizer(22);
+			}
+			.about-person {
+				flex-direction: column;
+				.person-image {
+					height:200px;
+					margin: 0 auto 5% auto;
+				}
+				.person-image1 {
+					background-position: right;
+				}
+				.person-image2 {
+					background-position: left;
+				}
+				.person-info{
+					padding-bottom: 8%;
+					.bar {
+						width:80%;
+					}
+					h1 {
+						@include fontSizer(22);
+						margin-top:7%;
+						margin-bottom: 3%;
+					}
+					.role {
+						margin-bottom:3%;
+					}
+				}
+				div {
+					width: 100%;
+				}
+			}
+		}
+	}
+
+	.donate {
+		.donate-wrap {
+			h2 {
+				@include fontSizer(18);
+			}
+			&::after {
+				font-size: 70px;
+			}
+			.donate-text {
+				width:90%;
+				p {
+					@include fontSizer(14);
+				}
+				.donate-button {
+					@include fontSizer(10);
+				}
+			}
+		}
+	}
+
+	.options {
+		.options-wrap {
+			.option {
+				.options-label {
+					@include fontSizer(18);
+				}
+			}
+			.options-categories {
+				ul {
+					li a{
+						@include fontSizer(14);
+					}
+				}
+			}
+			.options-archives {
+				ul {
+					li a {
+						@include fontSizer(14);
+					}
+				}
+			}
+			.options-news {
+				.news p:first-child {
+					@include fontSizer(12);
+					float:none;
+					text-align: left;
+				}
+				.news p:last-child {
+					@include fontSizer(12);
+					margin-top: 10px;
+					float:none;
+					text-align: left;
+				}
+			}
+			.options-follow {
+				.follow-person {
+					padding: 3% 11%;
+					.person-info{
+						padding-left:0;
+						.name {
+							@include fontSizer(14);
+						}
+						.role {
+							@include fontSizer(10);
+						}
+					}
+					.icons {
+						text-align: right;
+					}
+				}
+			}
+		}
+	}
+
+	footer {
+		.footer-wrap {
+			padding: 3% 1%;
+			.mobile-back-to-top {
+				display: block;
+				float:left;
+				position: relative;
+				top: 13px;
+				right: 5px;
+				a {
+					i.fa-square {
+						color:rgba(255,255,255,0.2);
+						color:white;
+					}
+					i.fa-chevron-up {
+					color: $darkFont;
+					}
+				}
+			}
+			.footer-middle {
+				clear:both;
+				img {
+					display: none;
+				}
+				p {
+					margin-bottom: 0;
+				}
+			}
+			.footer-left {
+				display: block;
+				float:right;
+				.social-media-buttons {
+					padding-bottom:10px;
+					a i {
+						padding: 0 7px;
+					}
+					a i:last-child {
+						padding-right:0;
+					}
+				}
+			}
+			.footer-right {
+				display: none;
+			}
+		}
+	}
+
+} //end media query 480 

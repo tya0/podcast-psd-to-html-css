@@ -1,0 +1,15 @@
+
+
+@mixin fontSizer($scale) {
+	font-size: $scale * 1px;
+	font-size: ($scale / 10) * 1rem;
+}
+
+@mixin link-styles($font-family, $font-weight, $color) {
+	text-decoration: none;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-family: $font-family;
+	font-weight: $font-weight;
+	color:$color;
+}
