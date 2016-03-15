@@ -55,10 +55,12 @@ function screenWidth(){
 }
 
 function closeNav() {
-	$('nav ul.nav li a').on('click', function(){
-		$('nav ul.nav').css('display', 'none');
-	});
-}
+	if ($(window).width() <= 480) {
+		$('nav ul.nav li a').on('click', function(){
+			$('nav ul.nav').css('display', 'none');
+		})
+	};
+};
 
 function filterSeason() {
 	$('select#season').change(function() {
@@ -73,11 +75,14 @@ function filterSeason() {
 			$('.episode').each(function() {
 				$('#episodes .episode:lt(4)').delay(200).fadeIn();
 			});
+			$('#loadMore').show();
 		} else {
 			$('.episodes').find('.episode[data-season=' + season + ']').each(function (i) {
 				$(this).delay(200).fadeIn();
+				if ($('episode:visible').length < 4) {
+					$('#loadMore').hide();
+				}
 			});
 		}
 	}
-
 }
