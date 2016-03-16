@@ -308,11 +308,11 @@ section.episodes {
 		justify-content: flex-start;
 		align-items: center;
 		font-family: $ptFont;
+		padding: 3% 0;
 			p {
 				text-transform: uppercase;
 				@include fontSizer(21);
 				letter-spacing: 2px;
-				margin: 8% 0;
 			}
 			select#season {
 				background: #1A171A;
